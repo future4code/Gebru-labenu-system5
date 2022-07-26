@@ -7,3 +7,5 @@ export const router = Router();
 const teamController = new TeamController()
 
 router.post('/createTeam', teamController.createTeam)
+
+router.get('/getTeamsActive', teamController.getTeamsActive)

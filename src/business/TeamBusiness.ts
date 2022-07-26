@@ -1,5 +1,6 @@
 import { TeamDatabase } from "../data/TeamDatabase"
 import { v4 as generateId } from 'uuid';
+import { Team } from "../types/Team";
 
 export class TeamBusiness {
     createTeam = async (input:any):Promise<void> => {
@@ -19,5 +20,9 @@ export class TeamBusiness {
         } catch (error:any) {
             throw new Error(error.message)
         }
+    }
+
+    async getTeamsActive(): Promise<Team[]> {				
+        return await new TeamDatabase().getTeamsActive();
     }
 }

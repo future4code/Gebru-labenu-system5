@@ -3,5 +3,9 @@ POST http://localhost:3003/createTeam
 Content-Type: application/json
 
 {
-   "name": "Gebru"
+   "name": "Aragon"
 }
+
+###
+
+GET http://localhost:3003/getTeamsActive
