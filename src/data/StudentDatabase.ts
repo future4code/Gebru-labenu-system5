@@ -29,4 +29,16 @@ export class StudentDatabase extends BaseDatabase {
             throw new Error(error.sqlMessage || error.message);
         }
     }
+
+    changeStudentTeam = async(id:string ,team: any): Promise<void> => {
+        try {  
+            console.log(team[0].id)
+            await BaseDatabase.connection('labenusystem_students')
+                .where({id: id})
+                .update({teamId: team[0].id})
+
+        } catch (error:any) {
+            throw new Error(error.sqlMessage || error.message);
+        }
+    }
 }

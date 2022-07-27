@@ -14,3 +14,4 @@ router.put('/changeModule/:id', teamController.changeModuleTeam)
 
 router.post('/createStudent', studentController.createStudent)
 router.get('/student/:name', studentController.getStudentByName)
+router.put('/changeStudentTeam/:id', studentController.changeStudentTeam)

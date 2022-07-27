@@ -24,11 +24,20 @@ POST http://localhost:3003/createStudent
 Content-Type: application/json
 
 {
-    "name": "Rommel",
-    "email": "rommel@email.com",
-    "birth_date": "1990/01/01",
-    "teamId": "33bc0b0c-8b78-4bbf-b30f-fd0eadb726b2"
+    "name": "Saullp",
+    "email": "saullo@email.com",
+    "birth_date": "1992/01/01",
+    "teamId": "e372416e-ff73-40f6-8f76-3945717f184a"
 }
 
 ###
-GET http://localhost:3003/student/Rommel
+GET http://localhost:3003/student/Savio
+
+###
+PUT http://localhost:3003/changeStudentTeam/3a9d6438-7468-46ad-80d3-f4022c985971
+Content-Type: application/json
+
+{
+    "name": "Aragon"
+}
+
