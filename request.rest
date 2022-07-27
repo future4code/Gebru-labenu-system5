@@ -29,3 +29,6 @@ Content-Type: application/json
     "birth_date": "1990/01/01",
     "teamId": "33bc0b0c-8b78-4bbf-b30f-fd0eadb726b2"
 }
+
+###
+GET http://localhost:3003/student/Rommel

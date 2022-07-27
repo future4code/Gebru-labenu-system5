@@ -20,4 +20,18 @@ export class StudentController extends BaseDatabase {
             res.status(400).send(error.message)
         }
     }
+
+    getStudentByName = async(req: Request, res: Response) : Promise<void> =>  {	
+        try {
+
+            const name = req.params.name
+
+            const student = await new StudentBusiness().getStudentByName(name);
+
+            res.send(student).status(200);
+
+        } catch (error:any) {
+            res.send({ message: error.message }).status(error.status);
+        }
+    }
 }
