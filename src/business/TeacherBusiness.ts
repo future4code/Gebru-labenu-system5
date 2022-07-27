@@ -1,10 +1,10 @@
-import { StudentDatabase } from "../data/StudentDatabase"
+import { TeacherDatabase } from "../data/TeacherDatabase"
 import { v4 as generateId } from 'uuid';
-import { Student } from "../types/Student";
+import { Teacher } from "../types/Teacher";
 import { TeamDatabase } from "../data/TeamDatabase";
 
-export class StudentBusiness {
-    createStudent = async (input:any):Promise<void> => {
+export class TeacherBusiness {
+    createTeacher = async (input:any):Promise<void> => {
         try {
             const {
                 name,
@@ -21,8 +21,8 @@ export class StudentBusiness {
                 throw new Error('Preencha os campos "nome", "email", "birth_date", "teamId"')
              }
              
-             const studentDatabase = new StudentDatabase()
-             await studentDatabase.insertStudent({
+             const teacherDatabase = new TeacherDatabase()
+             await teacherDatabase.insertTeacher({
                 id: generateId(),
                 name,
                 email,
@@ -34,32 +34,31 @@ export class StudentBusiness {
         }
     }
 
-    async getStudentByName(name: string): Promise<Student[]> {
-        if (
-            !name
-         ) {
-            throw new Error('Preencha o campo "nome"')
+    async getTeachers(): Promise<Teacher[]> {
+        const teachers = await new TeacherDatabase().getTeachers();
+        if(!teachers) {
+            throw new Error('Não existe docentes cadastrados!')
         }
         
-        return await new StudentDatabase().getStudentByName(name);
+        return teachers
     }
 
-    changeStudentTeam = async(id: string ,input: any):Promise<void> => {
+    changeTeacherTeam = async(id: string ,input: any):Promise<void> => {
         try {
             const { name } = input
             if(!id || !name){
-                throw new Error("Insira um id do estudante e o nome da turma!")
+                throw new Error("Insira um id do docente e o nome da turma!")
             }
 
-            const teamStudent = new TeamDatabase()
-            const team = await teamStudent.getTeamByName(name)
+            const teamTeacher = new TeamDatabase()
+            const team = await teamTeacher.getTeamByName(name)
 
             if(!team){
                 throw new Error("Turma não encontrada")
             }
 
-            const studentDatabase = new StudentDatabase()
-            await studentDatabase.changeStudentTeam(id, team)
+            const teacherDatabase = new TeacherDatabase()
+            await teacherDatabase.changeTeacherTeam(id, team)
 
         } catch (error:any) {
             throw new Error(error.message)

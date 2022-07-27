@@ -43,4 +43,18 @@ export class TeamDatabase extends BaseDatabase {
             throw new Error(error.sqlMessage || error.message);
         }
     }
+
+    getTeamByName = async(name: string): Promise<Team[]> => {
+        try {
+            const team = await BaseDatabase.connection()
+                .select("*")
+                .from('labenusystem_team')
+                .where({name: name});
+
+            return team;
+
+        } catch (error:any) {
+            throw new Error(error.sqlMessage || error.message);
+        }
+    }
 }
