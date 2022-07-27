@@ -18,3 +18,14 @@ Content-Type: application/json
 {
     "module": "Module01"
 }
+
+###
+POST http://localhost:3003/createStudent
+Content-Type: application/json
+
+{
+    "name": "Rommel",
+    "email": "rommel@email.com",
+    "birth_date": "1990/01/01",
+    "teamId": "33bc0b0c-8b78-4bbf-b30f-fd0eadb726b2"
+}
