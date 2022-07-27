@@ -51,8 +51,6 @@ export class StudentBusiness {
                 throw new Error("Insira um id do estudante e o nome da turma!")
             }
 
-            console.log("id", id, "name", name)
-
             const teamStudent = new TeamDatabase()
             const team = await teamStudent.getTeamByName(name)
 

@@ -20,3 +20,4 @@ router.put('/changeStudentTeam/:id', studentController.changeStudentTeam)
 
 router.post('/createTeacher', teacherController.createTeacher)
 router.get('/getTeachers', teacherController.getTeachers)
+router.put('/changeTeacherTeam/:id', teacherController.changeTeacherTeam)

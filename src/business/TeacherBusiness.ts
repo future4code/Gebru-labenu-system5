@@ -1,6 +1,7 @@
 import { TeacherDatabase } from "../data/TeacherDatabase"
 import { v4 as generateId } from 'uuid';
 import { Teacher } from "../types/Teacher";
+import { TeamDatabase } from "../data/TeamDatabase";
 
 export class TeacherBusiness {
     createTeacher = async (input:any):Promise<void> => {
@@ -40,5 +41,27 @@ export class TeacherBusiness {
         }
         
         return teachers
+    }
+
+    changeTeacherTeam = async(id: string ,input: any):Promise<void> => {
+        try {
+            const { name } = input
+            if(!id || !name){
+                throw new Error("Insira um id do docente e o nome da turma!")
+            }
+
+            const teamTeacher = new TeamDatabase()
+            const team = await teamTeacher.getTeamByName(name)
+
+            if(!team){
+                throw new Error("Turma não encontrada")
+            }
+
+            const teacherDatabase = new TeacherDatabase()
+            await teacherDatabase.changeTeacherTeam(id, team)
+
+        } catch (error:any) {
+            throw new Error(error.message)
+        }
     }
 }

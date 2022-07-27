@@ -32,4 +32,21 @@ export class TeacherController extends BaseDatabase {
             res.send({ message: error.message }).status(error.status);
         }
     }
+
+    changeTeacherTeam = async(req: Request, res: Response): Promise<void> => {
+        try {
+            const id = req.params.id as string
+            const input:any = {
+                name: req.body.name
+            }
+
+            const teacherBusiness = new TeacherBusiness()
+            await teacherBusiness.changeTeacherTeam(id, input);
+
+            res.status(200).send({ message: "Turma atualizada com sucesso" });
+
+        } catch (error:any) {
+            res.status(400).send({ error: error.message });
+        }
+    }
 }

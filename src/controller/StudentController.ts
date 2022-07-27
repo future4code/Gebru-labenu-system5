@@ -42,8 +42,6 @@ export class StudentController extends BaseDatabase {
                 name: req.body.name
             }
 
-            console.log("id", id, "Input.name", input.name)
-
             const studentBusiness = new StudentBusiness()
             await studentBusiness.changeStudentTeam(id, input);
 
