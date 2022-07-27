@@ -31,7 +31,7 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:3003/student/Savio
+GET http://localhost:3003/student/Rommel
 
 ###
 PUT http://localhost:3003/changeStudentTeam/3a9d6438-7468-46ad-80d3-f4022c985971
@@ -41,3 +41,16 @@ Content-Type: application/json
     "name": "Aragon"
 }
 
+###
+POST http://localhost:3003/createTeacher
+Content-Type: application/json
+
+{
+    "name": "Michelan",
+    "email": "michelan@email.com",
+    "birth_date": "1980/01/01",
+    "teamId": "33bc0b0c-8b78-4bbf-b30f-fd0eadb726b2"
+}
+
+###
+GET http://localhost:3003/getTeachers
