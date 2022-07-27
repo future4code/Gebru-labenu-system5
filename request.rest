@@ -3,9 +3,18 @@ POST http://localhost:3003/createTeam
 Content-Type: application/json
 
 {
-   "name": "Aragon"
+   "name": "Alves"
 }
 
 ###
 
 GET http://localhost:3003/getTeamsActive
+
+###
+
+PUT http://localhost:3003/changeModule/33bc0b0c-8b78-4bbf-b30f-fd0eadb726b2
+Content-Type: application/json
+
+{
+    "module": "Module01"
+}

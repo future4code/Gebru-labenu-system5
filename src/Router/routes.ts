@@ -9,3 +9,5 @@ const teamController = new TeamController()
 router.post('/createTeam', teamController.createTeam)
 
 router.get('/getTeamsActive', teamController.getTeamsActive)
+
+router.put('/changeModule/:id', teamController.changeModuleTeam)

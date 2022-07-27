@@ -1,7 +1,6 @@
 import { Request, Response } from "express"
 import { TeamBusiness } from "../business/TeamBusiness"
 import { BaseDatabase } from "../data/BaseDatabase"
-import { Team } from "../types/Team"
 
 export class TeamController extends BaseDatabase {
     createTeam = async (req: Request, res: Response) => {
@@ -19,7 +18,7 @@ export class TeamController extends BaseDatabase {
         }
     }
 
-    async getTeamsActive(req: Request, res: Response) : Promise<void>  {	
+    getTeamsActive = async(req: Request, res: Response) : Promise<void> =>  {	
         try {
 
             const teams = await new TeamBusiness().getTeamsActive();
@@ -28,6 +27,23 @@ export class TeamController extends BaseDatabase {
 
         } catch (error:any) {
             res.send({ message: error.message }).status(error.status);
+        }
+    }
+
+    changeModuleTeam = async(req: Request, res: Response): Promise<void> => {
+        try {
+            const id = req.params.id as string
+            const input:any = {
+                mod: req.body.module
+            }
+
+            const teamBusiness = new TeamBusiness()
+            await teamBusiness.changeModuleTeam(id, input);
+
+            res.status(200).send({ message: "Modulo da turma atualizado com sucesso" });
+
+        } catch (error:any) {
+            res.status(400).send({ error: error.message });
         }
     }
 }

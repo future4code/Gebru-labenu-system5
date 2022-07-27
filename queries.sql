@@ -3,7 +3,7 @@
     CREATE TABLE IF NOT EXISTS labenusystem_team(
         id varchar(255) PRIMARY KEY NOT NULL,
         name varchar(255) NOT NULL,
-        module ENUM('0', '1', '2', '3', '4', '5', '6') DEFAULT '0'
+        module ENUM("Module00", "Module01", "Module02", "Module03", "Module04", "Module05", "Module06") DEFAULT "Module00"
     );
 
     CREATE TABLE IF NOT EXISTS labenusystem_students (

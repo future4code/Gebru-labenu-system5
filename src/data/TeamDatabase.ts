@@ -13,20 +13,31 @@ export class TeamDatabase extends BaseDatabase {
         }
     }
 
-    async getTeamsActive(): Promise<Team[]> {
+    getTeamsActive = async(): Promise<Team[]> => {
         try {
             const teams: Team[] = [];
 
             const result = await BaseDatabase.connection()
                 .select("*")
                 .from('labenusystem_team')
-                .where(`module`, '!=', '0');
+                .where(`module`, '!=', 'Module00');
 
             for(let team of result){
                 teams.push(team);
             }
 
             return teams;
+
+        } catch (error:any) {
+            throw new Error(error.sqlMessage || error.message);
+        }
+    }
+
+    changeModuleTeam = async(id:string ,input: any): Promise<void> => {
+        try {  
+            await BaseDatabase.connection('labenusystem_team')
+                .where({id: id})
+                .update({module: input.mod})
 
         } catch (error:any) {
             throw new Error(error.sqlMessage || error.message);
